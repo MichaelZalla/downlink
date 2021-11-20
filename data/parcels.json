@@ -1,0 +1,842 @@
+{
+    "data": {
+        "parcels": [
+			{
+                "data": {
+					"name": ""
+				},
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1164"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-0",
+                "x": "0",
+                "y": "0"
+            },
+            {
+                "data": {
+					"name": ""
+				},
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1164"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1",
+                "x": "0",
+                "y": "1"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1813"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-10",
+                "x": "0",
+                "y": "10"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1760"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-100",
+                "x": "0",
+                "y": "100"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1760"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-101",
+                "x": "0",
+                "y": "101"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1760"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-102",
+                "x": "0",
+                "y": "102"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634218",
+                "x": "2",
+                "y": "-150"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634219",
+                "x": "2",
+                "y": "-149"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634220",
+                "x": "2",
+                "y": "-148"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634221",
+                "x": "2",
+                "y": "-147"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634222",
+                "x": "2",
+                "y": "-146"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634223",
+                "x": "2",
+                "y": "-145"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634224",
+                "x": "2",
+                "y": "-144"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634225",
+                "x": "2",
+                "y": "-143"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634226",
+                "x": "2",
+                "y": "-142"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634227",
+                "x": "2",
+                "y": "-141"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634228",
+                "x": "2",
+                "y": "-140"
+            },
+            {
+                "data": { "name": "Dark Castle" },
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634229",
+                "x": "2",
+                "y": "-139"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634230",
+                "x": "2",
+                "y": "-138"
+            },
+            {
+                "data": { "name": "Spaghetti Junction" },
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634231",
+                "x": "2",
+                "y": "-137"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634232",
+                "x": "2",
+                "y": "-136"
+            },
+            {
+                "data": { "name": "2,-135" },
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634233",
+                "x": "2",
+                "y": "-135"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634234",
+                "x": "2",
+                "y": "-134"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-4287"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634235",
+                "x": "2",
+                "y": "-133"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-4287"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634236",
+                "x": "2",
+                "y": "-132"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634237",
+                "x": "2",
+                "y": "-131"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634238",
+                "x": "2",
+                "y": "-130"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634239",
+                "x": "2",
+                "y": "-129"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634240",
+                "x": "2",
+                "y": "-128"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634241",
+                "x": "2",
+                "y": "-127"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634242",
+                "x": "2",
+                "y": "-126"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634243",
+                "x": "2",
+                "y": "-125"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634244",
+                "x": "2",
+                "y": "-124"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634245",
+                "x": "2",
+                "y": "-123"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634246",
+                "x": "2",
+                "y": "-122"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634247",
+                "x": "2",
+                "y": "-121"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2977"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634248",
+                "x": "2",
+                "y": "-120"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2977"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634249",
+                "x": "2",
+                "y": "-119"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634250",
+                "x": "2",
+                "y": "-118"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634251",
+                "x": "2",
+                "y": "-117"
+            },
+            {
+                "data": { "name": "Cheapest double road 1" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2295"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634252",
+                "x": "2",
+                "y": "-116"
+            },
+            {
+                "data": { "name": "Cheapest double road 2" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2295"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634253",
+                "x": "2",
+                "y": "-115"
+            },
+            {
+                "data": { "name": "Cheapest double road " },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2295"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634254",
+                "x": "2",
+                "y": "-114"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634255",
+                "x": "2",
+                "y": "-113"
+            },
+            {
+                "data": { "name": "Double Road Parcel !" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634256",
+                "x": "2",
+                "y": "-112"
+            },
+            {
+                "data": { "name": "Double Road Parcel !" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634257",
+                "x": "2",
+                "y": "-111"
+            },
+            {
+                "data": {
+					"name": ""
+				},
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-836"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634258",
+                "x": "2",
+                "y": "-110"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634259",
+                "x": "2",
+                "y": "-109"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1034"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634260",
+                "x": "2",
+                "y": "-108"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1034"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634261",
+                "x": "2",
+                "y": "-107"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-842"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634262",
+                "x": "2",
+                "y": "-106"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-842"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634263",
+                "x": "2",
+                "y": "-105"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-842"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634264",
+                "x": "2",
+                "y": "-104"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-842"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634265",
+                "x": "2",
+                "y": "-103"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634266",
+                "x": "2",
+                "y": "-102"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634267",
+                "x": "2",
+                "y": "-101"
+            },
+            {
+                "data": { "name": "Incognibo" },
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634268",
+                "x": "2",
+                "y": "-100"
+            },
+            {
+                "data": { "name": "万达广场2号" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2047"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634269",
+                "x": "2",
+                "y": "-99"
+            },
+            {
+                "data": { "name": "万达广场1号" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2047"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634270",
+                "x": "2",
+                "y": "-98"
+            },
+            {
+                "data": { "name": "Corner Lot" },
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-2828"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634271",
+                "x": "2",
+                "y": "-97"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634272",
+                "x": "2",
+                "y": "-96"
+            },
+            {
+                "data": {
+					"name": ""
+				},
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-862"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634273",
+                "x": "2",
+                "y": "-95"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634274",
+                "x": "2",
+                "y": "-94"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634275",
+                "x": "2",
+                "y": "-93"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634276",
+                "x": "2",
+                "y": "-92"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634277",
+                "x": "2",
+                "y": "-91"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634278",
+                "x": "2",
+                "y": "-90"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634279",
+                "x": "2",
+                "y": "-89"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634280",
+                "x": "2",
+                "y": "-88"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634281",
+                "x": "2",
+                "y": "-87"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634282",
+                "x": "2",
+                "y": "-86"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634283",
+                "x": "2",
+                "y": "-85"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634284",
+                "x": "2",
+                "y": "-84"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634285",
+                "x": "2",
+                "y": "-83"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634286",
+                "x": "2",
+                "y": "-82"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634287",
+                "x": "2",
+                "y": "-81"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634288",
+                "x": "2",
+                "y": "-80"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634289",
+                "x": "2",
+                "y": "-79"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634290",
+                "x": "2",
+                "y": "-78"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634291",
+                "x": "2",
+                "y": "-77"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634292",
+                "x": "2",
+                "y": "-76"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634293",
+                "x": "2",
+                "y": "-75"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634294",
+                "x": "2",
+                "y": "-74"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634295",
+                "x": "2",
+                "y": "-73"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1127"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634296",
+                "x": "2",
+                "y": "-72"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634297",
+                "x": "2",
+                "y": "-71"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634298",
+                "x": "2",
+                "y": "-70"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634299",
+                "x": "2",
+                "y": "-69"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634300",
+                "x": "2",
+                "y": "-68"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1255"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634301",
+                "x": "2",
+                "y": "-67"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1255"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634302",
+                "x": "2",
+                "y": "-66"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1255"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634303",
+                "x": "2",
+                "y": "-65"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634304",
+                "x": "2",
+                "y": "-64"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634305",
+                "x": "2",
+                "y": "-63"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634306",
+                "x": "2",
+                "y": "-62"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634307",
+                "x": "2",
+                "y": "-61"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634308",
+                "x": "2",
+                "y": "-60"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634309",
+                "x": "2",
+                "y": "-59"
+            },
+            {
+                "data": null,
+                "estate": null,
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634310",
+                "x": "2",
+                "y": "-58"
+            },
+            {
+                "data": null,
+                "estate": {
+                    "id": "estate-0x959e104e1a4db6317fa58f8295f586e1a978c297-1925"
+                },
+                "id": "parcel-0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d-1020847100762815390390123822295304634311",
+                "x": "2",
+                "y": "-57"
+            }
+        ]
+    }
+}

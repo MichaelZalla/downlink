@@ -1,0 +1,30 @@
+{
+  "name": "json-to-ts",
+  "version": "0.0.1",
+  "description": "A TypeScript module for converting JSON data (strings) into TypeScript interfaces.",
+  "main": "src/ts/index.ts",
+  "scripts": {
+    "start": "ts-node ./src/ts/index.ts",
+    "clean": "find src/ts -type f -name '*.js' | xargs rm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelZalla/json-to-ts.git"
+  },
+  "keywords": [
+    "typescript",
+    "json",
+    "interface",
+    "convert"
+  ],
+  "author": "Michael Zalla <michael@zalla.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelZalla/json-to-ts/issues"
+  },
+  "homepage": "https://github.com/MichaelZalla/json-to-ts#readme",
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}
