@@ -73,7 +73,7 @@ function getFieldMap(
             subFieldKey,
             data[subFieldKey],
             fields,
-            keychain
+            [...keychain, subFieldKey]
         )
     }
 
@@ -85,7 +85,7 @@ function populateSubFieldMap(
     subFieldKey: string,
     subFieldValue: unknown,
     parentFieldMap: FieldMap,
-    keychain: string[]): void
+    subKeychain: string[]): void
 {
 
     const isArray = subFieldValue instanceof Array;
@@ -99,8 +99,6 @@ function populateSubFieldMap(
 
     if(isObject(subFieldData))
     {
-        const subKeychain: string[] = [...keychain, subFieldKey]
-
         Object.assign(parentFieldMap, getFieldMap(subFieldData, subKeychain))
     }
     else
@@ -143,9 +141,8 @@ function populateSubFieldMap(
 
                     if(!(key in field.fields!))
                     {
-                        const subKeychain: string[] = [...keychain, subFieldKey, key]
+                        Object.assign(field.fields!, getFieldMap(obj[key], [...subKeychain, key]))
 
-                        Object.assign(field.fields!, getFieldMap(obj[key], subKeychain))
                         field.fields![key].isOptional = true
                     }
 
