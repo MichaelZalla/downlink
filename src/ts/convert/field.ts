@@ -111,13 +111,13 @@ function populateSubFieldMap(
         }
     }
 
-    const field = parentFieldMap[subFieldKey];
+    const subfield = parentFieldMap[subFieldKey];
 
     // Reconcile union types and optional types
 
     if(subFieldValue instanceof Array) {
 
-        field.isArray = true
+        subfield.isArray = true
 
         for(let index = 1; index < subFieldValue.length; index++) {
 
@@ -129,25 +129,27 @@ function populateSubFieldMap(
 
             if(
                 isObject(primitiveOrObject) &&
-                hasInterfaceTypes(field)
+                hasInterfaceTypes(subfield)
             )
             {
 
-                const obj = primitiveOrObject
+                const obj: {[key:string]:unknown} = primitiveOrObject
 
                 for(const key in obj)
                 {
 
+                    const value: unknown = obj[key]
+
                     // Check for any fields not present in the first array item
 
-                    if(!(key in field.fields))
+                    if(!(key in subfield.fields))
                     {
-                        Object.assign(field.fields, getFieldMap(obj[key], [...subKeychain, key]))
+                        Object.assign(subfield.fields, getFieldMap(value, [...subKeychain, key]))
 
-                        field.fields[key].isOptional = true
+                        subfield.fields[key].isOptional = true
                     }
 
-                    const subSubField = field.fields[key]
+                    const subSubField = subfield.fields[key]
 
                     const subSubFieldType = getJsonType(obj[key])
 
@@ -170,16 +172,16 @@ function populateSubFieldMap(
 
                 // Add any type if we haven't seen it previously
 
-                if(field.fieldTypes.includes(primitiveOrObjectType) === false)
+                if(subfield.fieldTypes.includes(primitiveOrObjectType) === false)
                 {
-                    field.fieldTypes.push(primitiveOrObjectType)
+                    subfield.fieldTypes.push(primitiveOrObjectType)
                 }
 
                 // Null fields are considered optional
 
                 if(primitiveOrObject === null)
                 {
-                    field.isOptional = true
+                    subfield.isOptional = true
                 }
 
             }
