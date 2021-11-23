@@ -69,102 +69,119 @@ function getFieldMap(
 
     for(const subFieldKey in data)
     {
+        populateSubFieldMap(
+            data,
+            subFieldKey,
+            fields,
+            keychain
+        )
+    }
 
-        const isArray = data[subFieldKey] instanceof Array;
+    return fieldMap
 
-        const subFieldData = isArray ?
-            (data[subFieldKey].length) ?
-                data[subFieldKey][0] :
-                {}
-                :
-                data[subFieldKey];
+}
 
-        if(isObject(subFieldData))
-        {
-            const subKeychain: string[] = [...keychain, subFieldKey]
+function populateSubFieldMap(
+    data: {[key: string]: unknown},
+    subFieldKey: string,
+    fields: FieldMap,
+    keychain: string[]): void
+{
 
-            Object.assign(fields, getFieldMap(subFieldData, subKeychain))
+    const isArray = data[subFieldKey] instanceof Array;
+
+    const subFieldData = isArray ?
+        (data[subFieldKey].length) ?
+            data[subFieldKey][0] :
+            {}
+            :
+            data[subFieldKey];
+
+    if(isObject(subFieldData))
+    {
+        const subKeychain: string[] = [...keychain, subFieldKey]
+
+        Object.assign(fields, getFieldMap(subFieldData, subKeychain))
+    }
+    else
+    {
+        // Primitive (base case)
+
+        fields[subFieldKey] = {
+            fieldName: subFieldKey,
+            fieldTypes: [getJsonType(subFieldData)],
+            isOptional: false,
+            isArray: false,
         }
-        else
-        {
-            // Primitive (base case)
+    }
 
-            fields![subFieldKey] = {
-                fieldName: subFieldKey,
-                fieldTypes: [getJsonType(subFieldData)],
-                isOptional: false,
-                isArray: false,
-            }
-        }
+    const field = fields[subFieldKey];
 
-        const field = fields![subFieldKey];
+    field.isArray = isArray
 
-        field.isArray = isArray
+    // Reconcile union types and optional types
 
-        // Reconcile union types and optional types
+    if(isArray) {
 
-        if(isArray) {
+        for(let index = 1; index < data[subFieldKey].length; index++) {
 
-            for(let index = 1; index < data[subFieldKey].length; index++) {
+            const primitiveOrObject = data[subFieldKey][index];
+            const primitiveOrObjectType = getJsonType(primitiveOrObject)
 
-                const primitiveOrObject = data[subFieldKey][index];
-                const primitiveOrObjectType = getJsonType(primitiveOrObject)
+            // Reconcile sub-fields if `data[subFieldKey][index]` is a complex
+            // value (object)
 
-                // Reconcile sub-fields if `data[subFieldKey][index]` is a complex value (object)
+            if(isObject(primitiveOrObject))
+            {
 
-                if(isObject(primitiveOrObject))
+                const obj = primitiveOrObject
+
+                for(const key in obj)
                 {
 
-                    const obj = primitiveOrObject
+                    // Check for any fields not present in the first array item
 
-                    for(const key in obj)
+                    if(!(key in field.fields!))
                     {
+                        const subKeychain: string[] = [...keychain, subFieldKey, key]
 
-                        // Check for any field(s) not present in the first array item
-
-                        if(!(key in field.fields!))
-                        {
-                            const subKeychain: string[] = [...keychain, subFieldKey, key]
-
-                            Object.assign(field.fields!, getFieldMap(obj[key], subKeychain))
-                            field.fields![key].isOptional = true
-                        }
-
-                        const subSubField = field.fields![key]
-
-                        const subSubFieldType = getJsonType(obj[key])
-
-                        // Add any type if we haven't seen it previously
-
-                        if(subSubField.fieldTypes.includes(subSubFieldType) === false)
-                        {
-                            subSubField.fieldTypes.push(subSubFieldType)
-
-                            if(obj[key] === null)
-                            {
-                                subSubField.isOptional = true
-                            }
-                        }
-
+                        Object.assign(field.fields!, getFieldMap(obj[key], subKeychain))
+                        field.fields![key].isOptional = true
                     }
-                }
-                else
-                {
+
+                    const subSubField = field.fields![key]
+
+                    const subSubFieldType = getJsonType(obj[key])
 
                     // Add any type if we haven't seen it previously
 
-                    if(field.fieldTypes.includes(primitiveOrObjectType) === false)
+                    if(subSubField.fieldTypes.includes(subSubFieldType) === false)
                     {
-                        field.fieldTypes.push(primitiveOrObjectType)
+                        subSubField.fieldTypes.push(subSubFieldType)
+
+                        if(obj[key] === null)
+                        {
+                            subSubField.isOptional = true
+                        }
                     }
 
-                    // Null fields are considered optional
+                }
+            }
+            else
+            {
 
-                    if(primitiveOrObject === null)
-                    {
-                        field.isOptional = true
-                    }
+                // Add any type if we haven't seen it previously
 
+                if(field.fieldTypes.includes(primitiveOrObjectType) === false)
+                {
+                    field.fieldTypes.push(primitiveOrObjectType)
+                }
+
+                // Null fields are considered optional
+
+                if(primitiveOrObject === null)
+                {
+                    field.isOptional = true
                 }
 
             }
@@ -172,8 +189,6 @@ function getFieldMap(
         }
 
     }
-
-    return fieldMap
 
 }
 

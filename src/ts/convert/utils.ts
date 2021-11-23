@@ -1,7 +1,10 @@
 import { JsonType } from './field'
 
-const isObject = (value: unknown) =>
-    (typeof value === 'object' && value !== null)
+function isObject(
+    value: unknown): value is {[key:string]:unknown}
+{
+    return (typeof value === 'object' && value !== null)
+}
 
 const getJsonType = (value: unknown) => value === null ?
 	`null` as JsonType :
