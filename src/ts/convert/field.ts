@@ -70,9 +70,9 @@ function getFieldMap(
     for(const subFieldKey in data)
     {
         populateSubFieldMap(
-            data,
-            fields,
             subFieldKey,
+            data[subFieldKey],
+            fields,
             keychain
         )
     }
@@ -82,20 +82,20 @@ function getFieldMap(
 }
 
 function populateSubFieldMap(
-    parentData: {[key: string]: unknown},
-    parentFieldMap: FieldMap,
     subFieldKey: string,
+    subFieldValue: unknown,
+    parentFieldMap: FieldMap,
     keychain: string[]): void
 {
 
-    const isArray = parentData[subFieldKey] instanceof Array;
+    const isArray = subFieldValue instanceof Array;
 
     const subFieldData = isArray ?
-        (parentData[subFieldKey].length) ?
-            parentData[subFieldKey][0] :
+        (subFieldValue.length) ?
+            subFieldValue[0] :
             {}
             :
-            parentData[subFieldKey];
+            subFieldValue;
 
     if(isObject(subFieldData))
     {
@@ -123,12 +123,12 @@ function populateSubFieldMap(
 
     if(isArray) {
 
-        for(let index = 1; index < parentData[subFieldKey].length; index++) {
+        for(let index = 1; index < subFieldValue.length; index++) {
 
-            const primitiveOrObject = parentData[subFieldKey][index];
+            const primitiveOrObject = subFieldValue[index];
             const primitiveOrObjectType = getJsonType(primitiveOrObject)
 
-            // Reconcile sub-fields if `data[subFieldKey][index]` is a complex
+            // Reconcile sub-fields if `subFieldValue[index]` is a complex
             // value (object)
 
             if(isObject(primitiveOrObject))
