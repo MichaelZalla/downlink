@@ -1,3 +1,4 @@
-node_modules
-*.js
 .DS_Store
+coverage
+node_modules
+src/ts/*.js

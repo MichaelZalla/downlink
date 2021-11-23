@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ./src/ts/index.ts",
     "clean": "find src/ts -type f -name '*.js' | xargs rm",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,10 @@
   },
   "homepage": "https://github.com/MichaelZalla/json-to-ts#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/jest": "^27.0.3",
+    "jest": "^27.3.1",
     "ts-node": "^10.4.0"
   }
 }
