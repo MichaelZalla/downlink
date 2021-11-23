@@ -27,9 +27,7 @@ function getFieldMap(
     const fieldKey = keychain[keychain.length - 1]
 
     const safeKeyChainKeys = keychain
-        .map(keify)
-        .map(singular)
-        .map(capitalize)
+        .map(k => capitalize(singular(keify(k))))
 
     const dataJsonType = getJsonType(data)
 
