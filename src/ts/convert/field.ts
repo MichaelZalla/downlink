@@ -71,8 +71,8 @@ function getFieldMap(
     {
         populateSubFieldMap(
             data,
-            subFieldKey,
             fields,
+            subFieldKey,
             keychain
         )
     }
@@ -82,32 +82,32 @@ function getFieldMap(
 }
 
 function populateSubFieldMap(
-    data: {[key: string]: unknown},
+    parentData: {[key: string]: unknown},
+    parentFieldMap: FieldMap,
     subFieldKey: string,
-    fields: FieldMap,
     keychain: string[]): void
 {
 
-    const isArray = data[subFieldKey] instanceof Array;
+    const isArray = parentData[subFieldKey] instanceof Array;
 
     const subFieldData = isArray ?
-        (data[subFieldKey].length) ?
-            data[subFieldKey][0] :
+        (parentData[subFieldKey].length) ?
+            parentData[subFieldKey][0] :
             {}
             :
-            data[subFieldKey];
+            parentData[subFieldKey];
 
     if(isObject(subFieldData))
     {
         const subKeychain: string[] = [...keychain, subFieldKey]
 
-        Object.assign(fields, getFieldMap(subFieldData, subKeychain))
+        Object.assign(parentFieldMap, getFieldMap(subFieldData, subKeychain))
     }
     else
     {
         // Primitive (base case)
 
-        fields[subFieldKey] = {
+        parentFieldMap[subFieldKey] = {
             fieldName: subFieldKey,
             fieldTypes: [getJsonType(subFieldData)],
             isOptional: false,
@@ -115,7 +115,7 @@ function populateSubFieldMap(
         }
     }
 
-    const field = fields[subFieldKey];
+    const field = parentFieldMap[subFieldKey];
 
     field.isArray = isArray
 
@@ -123,9 +123,9 @@ function populateSubFieldMap(
 
     if(isArray) {
 
-        for(let index = 1; index < data[subFieldKey].length; index++) {
+        for(let index = 1; index < parentData[subFieldKey].length; index++) {
 
-            const primitiveOrObject = data[subFieldKey][index];
+            const primitiveOrObject = parentData[subFieldKey][index];
             const primitiveOrObjectType = getJsonType(primitiveOrObject)
 
             // Reconcile sub-fields if `data[subFieldKey][index]` is a complex
