@@ -1,9 +1,9 @@
 import { JsonType } from './field'
 
-const isObject = (value: any) =>
+const isObject = (value: unknown) =>
     (typeof value === 'object' && value !== null)
 
-const getJsonType = (value: any) => value === null ?
+const getJsonType = (value: unknown) => value === null ?
 	`null` as JsonType :
 	(typeof value) as JsonType
 

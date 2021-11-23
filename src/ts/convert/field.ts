@@ -29,7 +29,7 @@ function hasInterfaceTypes(
 type FieldMap = { [name: string]: Field }
 
 function getFieldMap(
-	data: { [key: string]: any },
+	data: { [key: string]: unknown },
     keychain: string[] = [`root`]): FieldMap
 {
 
