@@ -23,10 +23,8 @@ const singular = (str: string) => {
 
 }
 
-const keify = (str: string) => {
-    let c = str.split(/[^a-zA-Z]/).map(capitalize).join('')
-    return str[0] + c.slice(1)
-}
+const keify = (str: string) =>
+    str[0] + str.split(/[\s-]/).map(capitalize).join('').slice(1)
 
 export {
     isObject,

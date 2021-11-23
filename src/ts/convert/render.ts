@@ -35,7 +35,7 @@ function renderFields(
         {
             const field: Field|FieldMap = fieldMap.fields[key]
 
-            const safeFieldName: string = field.fieldName.match(/([^a-zA-Z])/) ?
+            const safeFieldName: string = field.fieldName.match(/[\s-]/) ?
                 `"${field.fieldName}"` :
                 field.fieldName
 
