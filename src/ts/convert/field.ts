@@ -129,62 +129,80 @@ function populateSubFieldMap(
                 hasInterfaceTypes(subfield)
             )
             {
-
-                const obj: {[key:string]:unknown} = subFieldValue[index]
-
-                for(const key in obj)
-                {
-
-                    const value: unknown = obj[key]
-
-                    // Check for any fields not present in the first array item
-
-                    if(!(key in subfield.fields))
-                    {
-                        Object.assign(subfield.fields, getFieldMap(value, [...subKeychain, key]))
-
-                        subfield.fields[key].isOptional = true
-                    }
-
-                    const subSubField = subfield.fields[key]
-
-                    const subSubFieldType = getJsonType(obj[key])
-
-                    // Add any type if we haven't seen it previously
-
-                    if(subSubField.fieldTypes.includes(subSubFieldType) === false)
-                    {
-                        subSubField.fieldTypes.push(subSubFieldType)
-
-                        if(obj[key] === null)
-                        {
-                            subSubField.isOptional = true
-                        }
-                    }
-
-                }
+                updateComplexField(subfield, subFieldValue, index, subKeychain)
             }
             else
             {
-
-                // Add any type if we haven't seen it previously
-
-                const jsonType = getJsonType(subFieldValue[index])
-
-                if(subfield.fieldTypes.includes(jsonType) === false)
-                {
-                    subfield.fieldTypes.push(jsonType)
-                }
-
-                // Null fields are considered optional
-
-                if(subFieldValue[index] === null)
-                {
-                    subfield.isOptional = true
-                }
-
+                updateSimpleField(subfield, subFieldValue, index)
             }
 
+        }
+
+    }
+
+}
+
+function updateSimpleField(
+    subfield: Field,
+    subFieldValue: unknown[],
+    index: number)
+{
+
+    // Add any type if we haven't seen it previously
+
+    const jsonType = getJsonType(subFieldValue[index])
+
+    if(subfield.fieldTypes.includes(jsonType) === false)
+    {
+        subfield.fieldTypes.push(jsonType)
+    }
+
+    // Null fields are considered optional
+
+    if(subFieldValue[index] === null)
+    {
+        subfield.isOptional = true
+    }
+
+}
+
+function updateComplexField(
+    subfield: Field,
+    subFieldValue: Array<{[key:string]: unknown}>,
+    index: number,
+    keychain: string[])
+{
+
+    const obj: {[key:string]:unknown} = subFieldValue[index]
+
+    for(const key in obj)
+    {
+
+        const value: unknown = obj[key]
+
+        // Check for any fields not present in the first array item
+
+        if(!(key in subfield.fields))
+        {
+            Object.assign(subfield.fields, getFieldMap(value, [...keychain, key]))
+
+            subfield.fields[key].isOptional = true
+        }
+
+        const subSubField = subfield.fields[key]
+
+        const subSubFieldType = getJsonType(obj[key])
+
+        // Add any type if we haven't seen it previously
+
+        if(subSubField.fieldTypes.includes(subSubFieldType) === false)
+        {
+            subSubField.fieldTypes.push(subSubFieldType)
+
+            if(obj[key] === null)
+            {
+                subSubField.isOptional = true
+            }
         }
 
     }
