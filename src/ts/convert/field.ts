@@ -121,8 +121,6 @@ function populateSubFieldMap(
 
         for(let index = 1; index < subFieldValue.length; index++) {
 
-            const primitiveOrObjectType = getJsonType(subFieldValue[index])
-
             // Reconcile sub-fields if `subFieldValue[index]` is a complex
             // value (object)
 
@@ -171,9 +169,11 @@ function populateSubFieldMap(
 
                 // Add any type if we haven't seen it previously
 
-                if(subfield.fieldTypes.includes(primitiveOrObjectType) === false)
+                const jsonType = getJsonType(subFieldValue[index])
+
+                if(subfield.fieldTypes.includes(jsonType) === false)
                 {
-                    subfield.fieldTypes.push(primitiveOrObjectType)
+                    subfield.fieldTypes.push(jsonType)
                 }
 
                 // Null fields are considered optional
