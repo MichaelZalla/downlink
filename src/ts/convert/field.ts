@@ -13,8 +13,17 @@ interface Field {
 	fieldTypes: JsonType[];
 	isOptional: boolean;
     isArray: boolean;
-	interfaceName?: string;
-	fields?: FieldMap;
+}
+
+interface IComplexFieldExtras {
+    interfaceName: string;
+    fields: FieldMap;
+}
+
+function hasInterfaceTypes(
+    field: Field): field is Field&IComplexFieldExtras
+{
+    return field.fieldTypes.some(t => t === `object`)
 }
 
 type FieldMap = { [name: string]: Field }
@@ -43,20 +52,20 @@ function getFieldMap(
         }
     }
 
-    const interfaceName = `I${safeKeyChainKeys.join('')}`
-
-    const fieldMap: FieldMap = {
-        [fieldKey]: {
-            fieldName: fieldKey,
-            interfaceName: interfaceName,
-            fieldTypes: [`object`],
-            isOptional: false,
-            isArray: false,
-            fields: {},
-        }
+    const fieldEntry: Field&IComplexFieldExtras = {
+        fieldName: fieldKey,
+        fieldTypes: [`object`],
+        isOptional: false,
+        isArray: false,
+        interfaceName: `I${safeKeyChainKeys.join('')}`,
+        fields: {},
     }
 
-    const fields = fieldMap[fieldKey].fields;
+    const fieldMap: FieldMap = {
+        [fieldKey]: fieldEntry,
+    }
+
+    const fields = fieldEntry.fields;
 
     for(const subFieldKey in data)
     {
@@ -171,6 +180,7 @@ function getFieldMap(
 export {
 	JsonType,
 	Field,
+    hasInterfaceTypes,
 	FieldMap,
 	getFieldMap,
 }

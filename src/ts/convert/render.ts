@@ -1,10 +1,10 @@
-import { Field, FieldMap } from './field'
+import { Field, hasInterfaceTypes, FieldMap } from './field'
 
 function renderFieldType(field: Field)
 {
     let fieldTypes: string[] = field.fieldTypes
         .filter((t) => t !== `null`)
-        .map((t) => t === `object` ? field.interfaceName! : t)
+        .map((t) => hasInterfaceTypes(field) ? field.interfaceName : t)
 
     let fieldTypesFlat = fieldTypes.length > 1 ?
         fieldTypes.join(`|`) :
@@ -29,7 +29,7 @@ function renderFields(
 
         const fieldMap = renderQueue.shift() as Field
 
-        let serialiedFieldMap = `interface ${fieldMap?.interfaceName} {`
+        let serialiedFieldMap = `interface ${hasInterfaceTypes(fieldMap) && fieldMap.interfaceName} {`
 
         for(const key in fieldMap.fields)
         {
@@ -42,9 +42,14 @@ function renderFields(
             serialiedFieldMap += `\n    ${safeFieldName}${field.isOptional ?
                 '?' : ''}: ${renderFieldType(field)};`
 
-            // The render queue only produces `interface` declarations, so we only add complex fields to our queue / frontier
+            // The render queue only produces `interface` declarations, so we
+            // only add complex fields to our queue / frontier
 
-            field.interfaceName && renderQueue.push(field)
+            if(hasInterfaceTypes(field))
+            {
+                renderQueue.push(field)
+            }
+
         }
 
         serialiedFieldMap += `\n}`
