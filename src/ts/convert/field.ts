@@ -129,11 +129,11 @@ function populateSubFieldMap(
                 hasInterfaceTypes(subfield)
             )
             {
-                updateComplexField(subfield, subFieldValue, index, subKeychain)
+                updateComplexField(subfield, subFieldValue[index], subKeychain)
             }
             else
             {
-                updateSimpleField(subfield, subFieldValue, index)
+                updateSimpleField(subfield, subFieldValue[index])
             }
 
         }
@@ -143,55 +143,52 @@ function populateSubFieldMap(
 }
 
 function updateSimpleField(
-    subfield: Field,
-    subFieldValue: unknown[],
-    index: number)
+    field: Field,
+    alternateFieldValue: unknown)
 {
 
     // Add any type if we haven't seen it previously
 
-    const jsonType = getJsonType(subFieldValue[index])
+    const jsonType = getJsonType(alternateFieldValue)
 
-    if(subfield.fieldTypes.includes(jsonType) === false)
+    if(field.fieldTypes.includes(jsonType) === false)
     {
-        subfield.fieldTypes.push(jsonType)
+        field.fieldTypes.push(jsonType)
     }
 
     // Null fields are considered optional
 
-    if(subFieldValue[index] === null)
+    if(alternateFieldValue === null)
     {
-        subfield.isOptional = true
+        field.isOptional = true
     }
 
 }
 
 function updateComplexField(
-    subfield: Field,
-    subFieldValue: Array<{[key:string]: unknown}>,
-    index: number,
+    field: Field&IComplexFieldExtras,
+    alternateComplexFieldValue: {[key:string]:unknown},
     keychain: string[])
 {
 
-    const obj: {[key:string]:unknown} = subFieldValue[index]
-
-    for(const key in obj)
+    for(const key in alternateComplexFieldValue)
     {
 
-        const value: unknown = obj[key]
+        const value: unknown = alternateComplexFieldValue[key]
 
         // Check for any fields not present in the first array item
 
-        if(!(key in subfield.fields))
+        if(!(key in field.fields))
         {
-            Object.assign(subfield.fields, getFieldMap(value, [...keychain, key]))
+            // Object.assign(field.fields, getFieldMap(value, [...keychain, key]))
+            populateSubFieldMap(key, value, field.fields, [...keychain, key])
 
-            subfield.fields[key].isOptional = true
+            field.fields[key].isOptional = true
         }
 
-        const subSubField = subfield.fields[key]
+        const subSubField = field.fields[key]
 
-        const subSubFieldType = getJsonType(obj[key])
+        const subSubFieldType = getJsonType(alternateComplexFieldValue[key])
 
         // Add any type if we haven't seen it previously
 
@@ -199,7 +196,7 @@ function updateComplexField(
         {
             subSubField.fieldTypes.push(subSubFieldType)
 
-            if(obj[key] === null)
+            if(alternateComplexFieldValue[key] === null)
             {
                 subSubField.isOptional = true
             }
