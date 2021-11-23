@@ -29,6 +29,11 @@ function renderFields(
 
         const fieldMap = renderQueue.shift() as Field
 
+        if(!hasInterfaceTypes(fieldMap))
+        {
+            continue
+        }
+
         let serialiedFieldMap = `interface ${hasInterfaceTypes(fieldMap) && fieldMap.interfaceName} {`
 
         for(const key in fieldMap.fields)

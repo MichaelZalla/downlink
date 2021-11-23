@@ -88,9 +88,7 @@ function populateSubFieldMap(
     subKeychain: string[]): void
 {
 
-    const isArray = subFieldValue instanceof Array;
-
-    const subFieldData = isArray ?
+    const subFieldData = (subFieldValue instanceof Array) ?
         (subFieldValue.length) ?
             subFieldValue[0] :
             {}
@@ -115,11 +113,11 @@ function populateSubFieldMap(
 
     const field = parentFieldMap[subFieldKey];
 
-    field.isArray = isArray
-
     // Reconcile union types and optional types
 
-    if(isArray) {
+    if(subFieldValue instanceof Array) {
+
+        field.isArray = true
 
         for(let index = 1; index < subFieldValue.length; index++) {
 
@@ -129,7 +127,10 @@ function populateSubFieldMap(
             // Reconcile sub-fields if `subFieldValue[index]` is a complex
             // value (object)
 
-            if(isObject(primitiveOrObject))
+            if(
+                isObject(primitiveOrObject) &&
+                hasInterfaceTypes(field)
+            )
             {
 
                 const obj = primitiveOrObject
@@ -139,14 +140,14 @@ function populateSubFieldMap(
 
                     // Check for any fields not present in the first array item
 
-                    if(!(key in field.fields!))
+                    if(!(key in field.fields))
                     {
-                        Object.assign(field.fields!, getFieldMap(obj[key], [...subKeychain, key]))
+                        Object.assign(field.fields, getFieldMap(obj[key], [...subKeychain, key]))
 
-                        field.fields![key].isOptional = true
+                        field.fields[key].isOptional = true
                     }
 
-                    const subSubField = field.fields![key]
+                    const subSubField = field.fields[key]
 
                     const subSubFieldType = getJsonType(obj[key])
 
