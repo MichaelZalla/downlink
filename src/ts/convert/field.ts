@@ -107,15 +107,15 @@ function getFieldMap(
 
             for(let index = 1; index < data[subFieldKey].length; index++) {
 
-                let primitiveOrObject = data[subFieldKey][index];
-                let primitiveOrObjectType = getJsonType(primitiveOrObject)
+                const primitiveOrObject = data[subFieldKey][index];
+                const primitiveOrObjectType = getJsonType(primitiveOrObject)
 
                 // Reconcile sub-fields if `data[subFieldKey][index]` is a complex value (object)
 
                 if(isObject(primitiveOrObject))
                 {
 
-                    let obj = primitiveOrObject
+                    const obj = primitiveOrObject
 
                     for(const key in obj)
                     {
@@ -130,9 +130,9 @@ function getFieldMap(
                             field.fields![key].isOptional = true
                         }
 
-                        let subSubField = field.fields![key]
+                        const subSubField = field.fields![key]
 
-                        let subSubFieldType = getJsonType(obj[key])
+                        const subSubFieldType = getJsonType(obj[key])
 
                         // Add any type if we haven't seen it previously
 

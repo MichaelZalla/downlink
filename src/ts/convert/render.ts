@@ -2,7 +2,7 @@ import { Field, hasInterfaceTypes, FieldMap } from './field'
 
 function renderFieldType(field: Field)
 {
-    let fieldTypes: string[] = field.fieldTypes
+    const fieldTypes: string[] = field.fieldTypes
         .filter((t) => t !== `null`)
         .map((t) => hasInterfaceTypes(field) ? field.interfaceName : t)
 
@@ -22,7 +22,7 @@ function renderFields(
 	renderQueue: Field[] = []): string
 {
 
-    let renderedInterfaces = []
+    const renderedInterfaces = []
 
     while(renderQueue.length)
     {
