@@ -121,19 +121,18 @@ function populateSubFieldMap(
 
         for(let index = 1; index < subFieldValue.length; index++) {
 
-            const primitiveOrObject = subFieldValue[index];
-            const primitiveOrObjectType = getJsonType(primitiveOrObject)
+            const primitiveOrObjectType = getJsonType(subFieldValue[index])
 
             // Reconcile sub-fields if `subFieldValue[index]` is a complex
             // value (object)
 
             if(
-                isObject(primitiveOrObject) &&
+                isObject(subFieldValue[index]) &&
                 hasInterfaceTypes(subfield)
             )
             {
 
-                const obj: {[key:string]:unknown} = primitiveOrObject
+                const obj: {[key:string]:unknown} = subFieldValue[index]
 
                 for(const key in obj)
                 {
@@ -179,7 +178,7 @@ function populateSubFieldMap(
 
                 // Null fields are considered optional
 
-                if(primitiveOrObject === null)
+                if(subFieldValue[index] === null)
                 {
                     subfield.isOptional = true
                 }
