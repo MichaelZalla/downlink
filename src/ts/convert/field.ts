@@ -186,19 +186,19 @@ function updateComplexField(
             field.fields[key].isOptional = true
         }
 
-        const subSubField = field.fields[key]
+        const subField = field.fields[key]
 
-        const subSubFieldType = getJsonType(alternateComplexFieldValue[key])
+        const subFieldType = getJsonType(alternateComplexFieldValue[key])
 
         // Add any type if we haven't seen it previously
 
-        if(subSubField.fieldTypes.includes(subSubFieldType) === false)
+        if(subField.fieldTypes.includes(subFieldType) === false)
         {
-            subSubField.fieldTypes.push(subSubFieldType)
+            subField.fieldTypes.push(subFieldType)
 
-            if(alternateComplexFieldValue[key] === null)
+            if(value === null)
             {
-                subSubField.isOptional = true
+                subField.isOptional = true
             }
         }
 
