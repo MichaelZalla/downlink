@@ -35,6 +35,12 @@ function getFieldMap(
 	data: unknown,
 	keychain: string[] = [`root`]
 ): FieldMap {
+
+	if(keychain.length === 0)
+	{
+		throw new Error('Called `getFieldMap` with an empty `keychain` array! A keychain must include at least one key!')
+	}
+
 	const fieldKey = keychain[keychain.length - 1];
 
 	if (getJsonType(data) !== `object`) {
