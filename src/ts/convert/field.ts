@@ -35,9 +35,6 @@ function getFieldMap(
 
     const fieldKey = keychain[keychain.length - 1]
 
-    const safeKeyChainKeys = keychain
-        .map(k => pascal(singularize(k)))
-
     if(getJsonType(data) !== `object`)
     {
         return {
@@ -53,7 +50,7 @@ function getFieldMap(
     const fieldEntry: Field&IComplexFieldExtras = buildField({
         fieldName: fieldKey,
         fieldTypes: [`object`],
-        interfaceName: `I${safeKeyChainKeys.join('')}`,
+        interfaceName: `I${keychain.map(k => pascal(singularize(k))).join('')}`,
         fields: {},
     }) as Field&IComplexFieldExtras
 
