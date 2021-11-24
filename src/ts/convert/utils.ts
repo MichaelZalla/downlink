@@ -1,4 +1,4 @@
-import { JsonType } from './field'
+import { Field, IComplexFieldExtras, JsonType } from './field'
 
 function isObject(
     value: unknown): value is {[key:string]:unknown}
@@ -30,6 +30,14 @@ function getJsonType(
         (typeof value) as JsonType
 
 }
+
+const buildField = (options: Partial<Field&IComplexFieldExtras> = {}): Field => ({
+    fieldName: '',
+    fieldTypes: [`null`],
+    isOptional: false,
+    isArray: false,
+    ...options
+})
 
 const capitalize = (str: string) => {
 
@@ -69,6 +77,7 @@ const pascal = (str: string) => {
 export {
     isObject,
     getJsonType,
+    buildField,
     capitalize,
     singularize,
     pascal,

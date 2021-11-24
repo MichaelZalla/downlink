@@ -1,5 +1,6 @@
 import {
 	getJsonType,
+    buildField,
 	pascal,
 	singularize,
 	isObject,
@@ -42,23 +43,19 @@ function getFieldMap(
     if(getJsonType(data) !== `object`)
     {
         return {
-            [fieldKey]: {
+            [fieldKey]: buildField({
                 fieldName: fieldKey,
                 fieldTypes: [dataJsonType],
-                isOptional: false,
-                isArray: false,
-            }
+            })
         }
     }
 
-    const fieldEntry: Field&IComplexFieldExtras = {
+    const fieldEntry: Field&IComplexFieldExtras = buildField({
         fieldName: fieldKey,
         fieldTypes: [`object`],
-        isOptional: false,
-        isArray: false,
         interfaceName: `I${safeKeyChainKeys.join('')}`,
         fields: {},
-    }
+    }) as Field&IComplexFieldExtras
 
     const fieldMap: FieldMap = {
         [fieldKey]: fieldEntry,
@@ -208,7 +205,8 @@ function updateComplexField(
 export {
 	JsonType,
 	Field,
-    hasInterfaceTypes,
+    IComplexFieldExtras,
 	FieldMap,
+    hasInterfaceTypes,
 	getFieldMap,
 }
