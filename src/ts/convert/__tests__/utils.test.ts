@@ -85,3 +85,17 @@ describe('capitalize', () => {
     })
 
 })
+
+describe('singularize', () => {
+
+    test('removes any trailing `s` character from the string', () => {
+        expect(singularize('pants')).toBe('pant')
+        expect(singularize('pantss')).toBe('pants')
+        expect(singularize('spant')).toBe('spant')
+    })
+
+    test('ignores empty strings', () => {
+        expect(singularize('')).toBe('')
+    })
+
+})
