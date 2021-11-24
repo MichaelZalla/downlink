@@ -199,4 +199,107 @@ describe('getFieldMap', () => {
 			}),
 		});
 	});
+
+	test('supports data with deeply nested sub-objects', () => {
+		type Node = { data?: number; next?: Node };
+
+		const buildNode = ({ data, next }: Partial<Node> = {}) =>
+			next ? { data, next } : { data };
+
+		const root: Node = buildNode({
+			data: Math.random(),
+			next: buildNode({
+				data: Math.random(),
+				next: buildNode({
+					data: Math.random(),
+					next: buildNode({
+						data: Math.random(),
+					}),
+				}),
+			}),
+		});
+
+		const fm = getFieldMap(root);
+
+		expect(fm).toMatchInlineSnapshot(`
+		Object {
+		  "root": Object {
+		    "fieldName": "root",
+		    "fieldTypes": Array [
+		      "object",
+		    ],
+		    "fields": Object {
+		      "data": Object {
+		        "fieldName": "data",
+		        "fieldTypes": Array [
+		          "number",
+		        ],
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		      "next": Object {
+		        "fieldName": "next",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "data": Object {
+		            "fieldName": "data",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "next": Object {
+		            "fieldName": "next",
+		            "fieldTypes": Array [
+		              "object",
+		            ],
+		            "fields": Object {
+		              "data": Object {
+		                "fieldName": "data",
+		                "fieldTypes": Array [
+		                  "number",
+		                ],
+		                "isArray": false,
+		                "isOptional": false,
+		              },
+		              "next": Object {
+		                "fieldName": "next",
+		                "fieldTypes": Array [
+		                  "object",
+		                ],
+		                "fields": Object {
+		                  "data": Object {
+		                    "fieldName": "data",
+		                    "fieldTypes": Array [
+		                      "number",
+		                    ],
+		                    "isArray": false,
+		                    "isOptional": false,
+		                  },
+		                },
+		                "interfaceName": "IRootNextNextNext",
+		                "isArray": false,
+		                "isOptional": false,
+		              },
+		            },
+		            "interfaceName": "IRootNextNext",
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		        },
+		        "interfaceName": "IRootNext",
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		    },
+		    "interfaceName": "IRoot",
+		    "isArray": false,
+		    "isOptional": false,
+		  },
+		}
+	`);
+	});
 });
