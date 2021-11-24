@@ -62,3 +62,26 @@ describe('getJsonType', () => {
     })
 
 })
+
+describe('capitalize', () => {
+
+    test('converts the first letter of a string to uppercase', () => {
+
+        expect(capitalize('a')).toBe('A')
+        expect(capitalize('aa')).toBe('Aa')
+        expect(capitalize('aaa')).toBe('Aaa')
+
+        expect(capitalize('A')).toBe('A')
+        expect(capitalize('AA')).toBe('AA')
+
+    })
+
+    test('is a no-op for strings that start with whitespace', () => {
+        expect(capitalize(' trim me ')).toBe(' trim me ')
+    })
+
+    test('ignores empty strings', () => {
+        expect(capitalize('')).toBe('')
+    })
+
+})
