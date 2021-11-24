@@ -11,7 +11,7 @@
 		"pretty-quick": "pretty-quick",
     "clean": "find src/ts -type f -name '*.js' | xargs rm",
     "badges": "jest-coverage-badges --output ./badges",
-    "test": "jest-coverage-badges --output ./badges && jest --watch"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
