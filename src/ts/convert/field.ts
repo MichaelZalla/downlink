@@ -31,6 +31,12 @@ function hasInterfaceTypes(field: Field): field is Field & IComplexFieldExtras {
 
 type FieldMap = { [name: string]: Field };
 
+function getInterfaceName(
+	keychain: string[]): string
+{
+	return `I${keychain.map((k) => pascal(singularize(k))).join('')}`
+}
+
 function getFieldMap(
 	data: unknown,
 	keychain: string[] = [`root`]
@@ -55,7 +61,7 @@ function getFieldMap(
 	const fieldEntry: Field & IComplexFieldExtras = buildField({
 		fieldName: fieldKey,
 		fieldTypes: [`object`],
-		interfaceName: `I${keychain.map((k) => pascal(singularize(k))).join('')}`,
+		interfaceName: getInterfaceName(keychain),
 		fields: {},
 	}) as Field & IComplexFieldExtras;
 
@@ -178,5 +184,6 @@ export {
 	IComplexFieldExtras,
 	FieldMap,
 	hasInterfaceTypes,
+	getInterfaceName,
 	getFieldMap,
 };
