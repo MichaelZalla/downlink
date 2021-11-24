@@ -1,4 +1,7 @@
-import { JsonType, Field, hasInterfaceTypes } from '../field';
+import {
+	hasInterfaceTypes,
+	getInterfaceName,
+} from '../field';
 import { buildField } from '../utils';
 
 describe('hasInterfaceTypes', () => {
@@ -50,5 +53,35 @@ describe('hasInterfaceTypes', () => {
 				})
 			)
 		).toBeTruthy();
+	});
+});
+
+describe('getInterfaceName', () => {
+	test('automatically performs naive singularization of keys', () => {
+		expect(getInterfaceName(['settings'])).toBe(`ISetting`);
+	});
+
+	test('combines all keys in the given keychain to generate the `interfaceName`', () => {
+		expect(getInterfaceName(['user', 'account', 'preference'])).toBe(
+			`IUserAccountPreference`
+		);
+	});
+
+	test('handles whitespace in field keys (names)', () => {
+		expect(getInterfaceName(['token pairs', 'records', 'meta data'])).toBe(
+			`ITokenPairRecordMetaData`
+		);
+	});
+
+	test('handles hyphens in field keys (names)', () => {
+		expect(getInterfaceName(['token-pairs', 'records', 'meta-data'])).toBe(
+			`ITokenPairRecordMetaData`
+		);
+	});
+
+	test('handles underscores in field keys (names)', () => {
+		expect(getInterfaceName(['records', '__timestamps'])).toBe(
+			`IRecordTimestamp`
+		);
 	});
 });
