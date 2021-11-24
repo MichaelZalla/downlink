@@ -2,7 +2,7 @@ import {
 	getJsonType,
 	capitalize,
 	keify,
-	singular,
+	singularize,
 	isObject,
 } from './utils'
 
@@ -36,7 +36,7 @@ function getFieldMap(
     const fieldKey = keychain[keychain.length - 1]
 
     const safeKeyChainKeys = keychain
-        .map(k => capitalize(singular(keify(k))))
+        .map(k => capitalize(singularize(keify(k))))
 
     const dataJsonType = getJsonType(data)
 

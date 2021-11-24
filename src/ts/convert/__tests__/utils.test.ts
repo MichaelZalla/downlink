@@ -4,7 +4,7 @@ import {
     isObject,
     getJsonType,
     capitalize,
-    singular,
+    singularize,
     keify,
 } from '../utils'
 

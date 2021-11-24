@@ -42,7 +42,7 @@ const capitalize = (str: string) => {
 
 }
 
-const singular = (str: string) => {
+const singularize = (str: string) => {
 
     if(!str)
     {
@@ -71,6 +71,6 @@ export {
     isObject,
     getJsonType,
     capitalize,
-    singular,
+    singularize,
     keify,
 }
