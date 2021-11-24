@@ -56,8 +56,7 @@ const pascal = (str: string) => {
 	if (!str) {
 		return '';
 	}
-
-	return str.split(/[\s-]/).map(capitalize).join('');
+	return str.split(/[\s_~@#$%^&\-=+|:;,]/).map(capitalize).join('');
 };
 
 export { isObject, getJsonType, buildField, capitalize, singularize, pascal };
