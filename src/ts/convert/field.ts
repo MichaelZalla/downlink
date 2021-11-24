@@ -150,32 +150,47 @@ function updateComplexField(
 	alternateComplexFieldValue: { [key: string]: unknown },
 	keychain: string[]
 ) {
-	for (const key in alternateComplexFieldValue) {
+
+	// Check for original subfields not present in this (array) record
+
+	for(const key in field.fields)
+	{
+		if(
+			!(key in alternateComplexFieldValue) ||
+			alternateComplexFieldValue[key] === null
+		)
+		{
+			field.fields[key].isOptional = true
+		}
+	}
+
+	// Check for current subfields not present in the original (array) record
+
+	for(const key in alternateComplexFieldValue)
+	{
 		const value: unknown = alternateComplexFieldValue[key];
 
-		// Check for any fields not present in the first array item
-
-		if (!(key in field.fields)) {
-			// Object.assign(field.fields, getFieldMap(value, [...keychain, key]))
+		if(
+			!(key in field.fields) ||
+			field.fields[key] === null
+		)
+		{
 			populateSubFieldMap(key, value, field.fields, [...keychain, key]);
 
-			field.fields[key].isOptional = true;
+			field.fields[key].isOptional = true
 		}
 
+		// Add the field type if we haven't seen it before
+
 		const subField = field.fields[key];
-
 		const subFieldType = getJsonType(alternateComplexFieldValue[key]);
-
-		// Add any type if we haven't seen it previously
 
 		if (subField.fieldTypes.includes(subFieldType) === false) {
 			subField.fieldTypes.push(subFieldType);
-
-			if (value === null) {
-				subField.isOptional = true;
-			}
 		}
+
 	}
+
 }
 
 export {
