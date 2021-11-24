@@ -10,8 +10,16 @@ const getJsonType = (value: unknown) => value === null ?
 	`null` as JsonType :
 	(typeof value) as JsonType
 
-const capitalize = (str: string) =>
-    str[0].toUpperCase() + str.slice(1)
+const capitalize = (str: string) => {
+
+    if(!str)
+    {
+        return ''
+    }
+
+    return str[0].toUpperCase() + str.slice(1)
+
+}
 
 const singular = (str: string) => {
 
@@ -26,8 +34,17 @@ const singular = (str: string) => {
 
 }
 
-const keify = (str: string) =>
-    str[0] + str.split(/[\s-]/).map(capitalize).join('').slice(1)
+const keify = (str: string) => {
+
+    if(!str)
+    {
+        return ''
+    }
+
+
+    return str[0] + str.split(/[\s-]/).map(capitalize).join('').slice(1)
+
+}
 
 export {
     isObject,
