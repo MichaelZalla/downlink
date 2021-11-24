@@ -10,7 +10,8 @@
     "prettier": "prettier --config .prettierrc.js --write **/*.ts",
 		"pretty-quick": "pretty-quick",
     "clean": "find src/ts -type f -name '*.js' | xargs rm",
-    "test": "jest && jest-coverage-badges --output ./badges/"
+    "badges": "jest-coverage-badges --output ./badges",
+    "test": "jest-coverage-badges --output ./badges && jest --watch"
   },
   "repository": {
     "type": "git",
