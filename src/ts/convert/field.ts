@@ -32,7 +32,7 @@ function hasInterfaceTypes(field: Field): field is Field & IComplexFieldExtras {
 type FieldMap = { [name: string]: Field };
 
 function getFieldMap(
-	data: { [key: string]: unknown },
+	data: unknown,
 	keychain: string[] = [`root`]
 ): FieldMap {
 	const fieldKey = keychain[keychain.length - 1];
@@ -59,8 +59,10 @@ function getFieldMap(
 
 	const fields = fieldEntry.fields;
 
-	for (const subFieldKey in data) {
-		populateSubFieldMap(subFieldKey, data[subFieldKey], fields, [
+	const dataAsMap = data as { [key: string]: unknown }
+
+	for (const subFieldKey in dataAsMap) {
+		populateSubFieldMap(subFieldKey, dataAsMap[subFieldKey], fields, [
 			...keychain,
 			subFieldKey,
 		]);
