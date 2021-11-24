@@ -302,4 +302,145 @@ describe('getFieldMap', () => {
 		}
 	`);
 	});
+
+	test('supports JSON array instances', () => {
+		const buildCoord = ({ ...coords } = {}) => ({
+			x: Math.random(),
+			y: Math.random(),
+			...coords,
+		});
+
+		const coordinates = [
+			buildCoord(),
+			buildCoord(),
+			buildCoord(),
+			buildCoord(),
+		];
+
+		const fm = getFieldMap(coordinates);
+
+		expect(fm).toMatchInlineSnapshot(`
+		Object {
+		  "root": Object {
+		    "fieldName": "root",
+		    "fieldTypes": Array [
+		      "object",
+		    ],
+		    "fields": Object {
+		      "0": Object {
+		        "fieldName": "0",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "x": Object {
+		            "fieldName": "x",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "y": Object {
+		            "fieldName": "y",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		        },
+		        "interfaceName": "IRoot0",
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		      "1": Object {
+		        "fieldName": "1",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "x": Object {
+		            "fieldName": "x",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "y": Object {
+		            "fieldName": "y",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		        },
+		        "interfaceName": "IRoot1",
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		      "2": Object {
+		        "fieldName": "2",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "x": Object {
+		            "fieldName": "x",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "y": Object {
+		            "fieldName": "y",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		        },
+		        "interfaceName": "IRoot2",
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		      "3": Object {
+		        "fieldName": "3",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "x": Object {
+		            "fieldName": "x",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "y": Object {
+		            "fieldName": "y",
+		            "fieldTypes": Array [
+		              "number",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		        },
+		        "interfaceName": "IRoot3",
+		        "isArray": false,
+		        "isOptional": false,
+		      },
+		    },
+		    "interfaceName": "IRoot",
+		    "isArray": false,
+		    "isOptional": false,
+		  },
+		}
+	`);
+	});
 });
