@@ -29,7 +29,7 @@ function getJsonType(value: unknown) {
 const buildField = (
 	options: Partial<Field & IComplexFieldExtras> = {}
 ): Field => ({
-	fieldName: '',
+	fieldName: 'root',
 	fieldTypes: [`null`],
 	isOptional: false,
 	isArray: false,

@@ -57,7 +57,7 @@ describe('buildField', () => {
 	test('returns a Field object with default parameters', () => {
 		expect(buildField()).toMatchInlineSnapshot(`
 		Object {
-		  "fieldName": "",
+		  "fieldName": "root",
 		  "fieldTypes": Array [
 		    "null",
 		  ],
@@ -67,8 +67,8 @@ describe('buildField', () => {
 	`);
 	});
 
-	test('assigns the field an empty fieldName if no `fieldName` option is given', () => {
-		expect(buildField().fieldName).toBe('');
+	test('assigns the field a fieldName of `root` if no `fieldName` is given', () => {
+		expect(buildField().fieldName).toBe(`root`);
 	});
 
 	test('defaults to a field with a `null` fieldType if no `fieldTypes` are given', () => {
