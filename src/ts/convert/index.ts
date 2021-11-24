@@ -1,14 +1,3 @@
-import { getFieldMap } from './field';
-import { renderFields } from './render';
+import {jsonToTs} from './json-to-ts'
 
-function jsonToTs(json: string): string {
-	const fieldMap = getFieldMap(JSON.parse(json));
-
-	if ('root' in fieldMap) {
-		return renderFields([fieldMap.root]);
-	}
-
-	return ``;
-}
-
-export { jsonToTs };
+export default jsonToTs
