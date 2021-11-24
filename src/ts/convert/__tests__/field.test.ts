@@ -1,6 +1,9 @@
 import {
 	hasInterfaceTypes,
 	getInterfaceName,
+	getFieldMap,
+	IComplexFieldExtras,
+	Field,
 } from '../field';
 import { buildField } from '../utils';
 
@@ -83,5 +86,117 @@ describe('getInterfaceName', () => {
 		expect(getInterfaceName(['records', '__timestamps'])).toBe(
 			`IRecordTimestamp`
 		);
+	});
+});
+
+describe('getFieldMap', () => {
+	test('returns a FieldMap describing the given input (primitive or complex data)', () => {
+		expect(getFieldMap(null)).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+			}),
+		});
+	});
+
+	test("infers the field map's root entry using the `keychain` argument passed in", () => {
+		expect(getFieldMap(null, [`customRoot`])).toMatchObject({
+			customRoot: buildField({
+				fieldName: `customRoot`,
+			}),
+		});
+	});
+
+	test('accepts an arbitrary-length `keychain`; uses the last keychain item as the root key', () => {
+		expect(getFieldMap(null, [`grandParent`, `parent`, `child`])).toMatchObject(
+			{
+				child: buildField({
+					fieldName: 'child',
+				}),
+			}
+		);
+	});
+
+	test('generates a `fieldName` based on the last key in the `keychain`', () => {
+		expect(getFieldMap(null, [`grandParent`, `parent`, `child`])).toMatchObject(
+			{
+				child: buildField({
+					fieldName: `child`,
+				}),
+			}
+		);
+	});
+
+	test('throw if the caller passes an empty `keychain` parameter', () => {
+		expect(() => getFieldMap(null, [])).toThrowErrorMatchingInlineSnapshot(
+			`"Called \`getFieldMap\` with an empty \`keychain\` array! A keychain must include at least one key!"`
+		);
+	});
+
+	test('returns a simple FieldMap for primitive-type inputs (boolean, number, string)', () => {
+		expect(getFieldMap(true)).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+				fieldTypes: [`boolean`],
+			}),
+		});
+
+		expect(getFieldMap(3.14)).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+				fieldTypes: [`number`],
+			}),
+		});
+
+		expect(getFieldMap(`Hello, TypeScript`)).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+				fieldTypes: [`string`],
+			}),
+		});
+	});
+
+	test('returns a simple FieldMap with a `fieldType` of [`null`] for null inputs', () => {
+		expect(getFieldMap(null)).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+				fieldTypes: [`null`],
+			}),
+		});
+	});
+
+	test('returns a complex FieldMap with a `fieldType` [`object`] for object inputs', () => {
+		expect(getFieldMap({})).toMatchObject({
+			root: buildField({
+				fieldName: `root`,
+				fieldTypes: [`object`],
+			}),
+		});
+	});
+
+	test('generates an `interfaceName` field property for complex object inputs', () => {
+		const rootField = getFieldMap({}).root as Field & IComplexFieldExtras;
+		expect(rootField.interfaceName).toBe(`IRoot`);
+	});
+
+	test('generates sub-fields as their own FieldMap under `fields`', () => {
+		const data = { one: 'red', two: 'blue' };
+		const fm = getFieldMap(data);
+
+		expect(fm).toMatchObject({
+			root: buildField({
+				fieldTypes: [`object`],
+				interfaceName: `IRoot`,
+				fields: {
+					one: buildField({
+						fieldName: `one`,
+						fieldTypes: [`string`],
+					}),
+					two: buildField({
+						fieldName: `two`,
+						fieldTypes: [`string`],
+					}),
+				},
+			}),
+		});
 	});
 });

@@ -24,7 +24,7 @@ describe('isObject', () => {
 });
 
 describe('getJsonType', () => {
-	test('returns `null` for null values', () => {
+	test('returns `null` for null inputs', () => {
 		expect(getJsonType(null)).toBe('null');
 	});
 
