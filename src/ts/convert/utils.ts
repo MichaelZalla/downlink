@@ -6,9 +6,30 @@ function isObject(
     return (Object(value) === value)
 }
 
-const getJsonType = (value: unknown) => value === null ?
-	`null` as JsonType :
-	(typeof value) as JsonType
+function getJsonType(
+    value: unknown)
+{
+
+    if(typeof value === 'undefined')
+    {
+        throw new Error(`Called isObject() on undefined! Undefined is not a valid JSON data-type.`)
+    }
+
+    if(typeof value === 'function')
+    {
+        throw new Error(`Called isObject() on a function! Function is not a valid JSON data-type.`)
+    }
+
+    if(value instanceof Date)
+    {
+        throw new Error(`Called isObject() on a Date! Date is not a valid JSON data-type.`)
+    }
+
+    return value === null ?
+        `null` as JsonType :
+        (typeof value) as JsonType
+
+}
 
 const capitalize = (str: string) => {
 
