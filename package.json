@@ -7,6 +7,8 @@
     "start": "ts-node ./src/ts/index.ts",
     "build": "tsc",
     "lint": "./node_modules/.bin/eslint src/ts --ext .ts",
+    "prettier": "prettier --config .prettierrc.js --write **/*.ts",
+		"pretty-quick": "pretty-quick",
     "clean": "find src/ts -type f -name '*.js' | xargs rm",
     "test": "jest && jest-coverage-badges --output ./badges/"
   },
@@ -33,11 +35,18 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
     "jest-coverage-badges": "^1.1.2",
+    "prettier": "^2.4.1",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2",
     "typescript-eslint": "^0.0.1-alpha.0"
-  }
+  },
+  "husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	}
 }

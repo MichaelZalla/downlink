@@ -1,4 +1,4 @@
-import { jsonToTs } from './convert'
+import { jsonToTs } from './convert';
 
 // import './examples/parcels'
 // import './examples/pools'
@@ -47,5 +47,5 @@ const someJson: string = `
         "three"
     ]
 }
-`
-console.log(jsonToTs(someJson))
+`;
+console.log(jsonToTs(someJson));

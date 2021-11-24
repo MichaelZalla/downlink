@@ -1,209 +1,175 @@
 import {
 	getJsonType,
-    buildField,
+	buildField,
 	pascal,
 	singularize,
 	isObject,
-} from './utils'
+} from './utils';
 
-type JsonType = 'string'|'number'|'boolean'|'undefined'|'object'|`null`
+type JsonType =
+	| 'string'
+	| 'number'
+	| 'boolean'
+	| 'undefined'
+	| 'object'
+	| `null`;
 
 interface Field {
 	fieldName: string;
 	fieldTypes: JsonType[];
 	isOptional: boolean;
-    isArray: boolean;
+	isArray: boolean;
 }
 
 interface IComplexFieldExtras {
-    interfaceName: string;
-    fields: FieldMap;
+	interfaceName: string;
+	fields: FieldMap;
 }
 
-function hasInterfaceTypes(
-    field: Field): field is Field&IComplexFieldExtras
-{
-    return field.fieldTypes.some(t => t === `object`)
+function hasInterfaceTypes(field: Field): field is Field & IComplexFieldExtras {
+	return field.fieldTypes.some((t) => t === `object`);
 }
 
-type FieldMap = { [name: string]: Field }
+type FieldMap = { [name: string]: Field };
 
 function getFieldMap(
 	data: { [key: string]: unknown },
-    keychain: string[] = [`root`]): FieldMap
-{
+	keychain: string[] = [`root`]
+): FieldMap {
+	const fieldKey = keychain[keychain.length - 1];
 
-    const fieldKey = keychain[keychain.length - 1]
+	if (getJsonType(data) !== `object`) {
+		return {
+			[fieldKey]: buildField({
+				fieldName: fieldKey,
+				fieldTypes: [getJsonType(data)],
+			}),
+		};
+	}
 
-    if(getJsonType(data) !== `object`)
-    {
-        return {
-            [fieldKey]: buildField({
-                fieldName: fieldKey,
-                fieldTypes: [
-                    getJsonType(data)
-                ],
-            })
-        }
-    }
+	const fieldEntry: Field & IComplexFieldExtras = buildField({
+		fieldName: fieldKey,
+		fieldTypes: [`object`],
+		interfaceName: `I${keychain.map((k) => pascal(singularize(k))).join('')}`,
+		fields: {},
+	}) as Field & IComplexFieldExtras;
 
-    const fieldEntry: Field&IComplexFieldExtras = buildField({
-        fieldName: fieldKey,
-        fieldTypes: [`object`],
-        interfaceName: `I${keychain.map(k => pascal(singularize(k))).join('')}`,
-        fields: {},
-    }) as Field&IComplexFieldExtras
+	const fieldMap: FieldMap = {
+		[fieldKey]: fieldEntry,
+	};
 
-    const fieldMap: FieldMap = {
-        [fieldKey]: fieldEntry,
-    }
+	const fields = fieldEntry.fields;
 
-    const fields = fieldEntry.fields;
+	for (const subFieldKey in data) {
+		populateSubFieldMap(subFieldKey, data[subFieldKey], fields, [
+			...keychain,
+			subFieldKey,
+		]);
+	}
 
-    for(const subFieldKey in data)
-    {
-        populateSubFieldMap(
-            subFieldKey,
-            data[subFieldKey],
-            fields,
-            [...keychain, subFieldKey]
-        )
-    }
-
-    return fieldMap
-
+	return fieldMap;
 }
 
 function populateSubFieldMap(
-    subFieldKey: string,
-    subFieldValue: unknown,
-    parentFieldMap: FieldMap,
-    subKeychain: string[]): void
-{
+	subFieldKey: string,
+	subFieldValue: unknown,
+	parentFieldMap: FieldMap,
+	subKeychain: string[]
+): void {
+	const subFieldData =
+		subFieldValue instanceof Array
+			? subFieldValue.length
+				? subFieldValue[0]
+				: {}
+			: subFieldValue;
 
-    const subFieldData = (subFieldValue instanceof Array) ?
-        (subFieldValue.length) ?
-            subFieldValue[0] :
-            {}
-            :
-            subFieldValue;
+	if (isObject(subFieldData)) {
+		Object.assign(parentFieldMap, getFieldMap(subFieldData, subKeychain));
+	} else {
+		// Primitive (base case)
 
-    if(isObject(subFieldData))
-    {
-        Object.assign(parentFieldMap, getFieldMap(subFieldData, subKeychain))
-    }
-    else
-    {
-        // Primitive (base case)
+		parentFieldMap[subFieldKey] = {
+			fieldName: subFieldKey,
+			fieldTypes: [getJsonType(subFieldData)],
+			isOptional: false,
+			isArray: false,
+		};
+	}
 
-        parentFieldMap[subFieldKey] = {
-            fieldName: subFieldKey,
-            fieldTypes: [getJsonType(subFieldData)],
-            isOptional: false,
-            isArray: false,
-        }
-    }
+	const subfield = parentFieldMap[subFieldKey];
 
-    const subfield = parentFieldMap[subFieldKey];
+	// Reconcile union types and optional types
 
-    // Reconcile union types and optional types
+	if (subFieldValue instanceof Array) {
+		subfield.isArray = true;
 
-    if(subFieldValue instanceof Array) {
+		for (let index = 1; index < subFieldValue.length; index++) {
+			// Reconcile sub-fields if `subFieldValue[index]` is a complex
+			// value (object)
 
-        subfield.isArray = true
-
-        for(let index = 1; index < subFieldValue.length; index++) {
-
-            // Reconcile sub-fields if `subFieldValue[index]` is a complex
-            // value (object)
-
-            if(
-                isObject(subFieldValue[index]) &&
-                hasInterfaceTypes(subfield)
-            )
-            {
-                updateComplexField(subfield, subFieldValue[index], subKeychain)
-            }
-            else
-            {
-                updateSimpleField(subfield, subFieldValue[index])
-            }
-
-        }
-
-    }
-
+			if (isObject(subFieldValue[index]) && hasInterfaceTypes(subfield)) {
+				updateComplexField(subfield, subFieldValue[index], subKeychain);
+			} else {
+				updateSimpleField(subfield, subFieldValue[index]);
+			}
+		}
+	}
 }
 
-function updateSimpleField(
-    field: Field,
-    alternateFieldValue: unknown)
-{
+function updateSimpleField(field: Field, alternateFieldValue: unknown) {
+	// Add any type if we haven't seen it previously
 
-    // Add any type if we haven't seen it previously
+	const jsonType = getJsonType(alternateFieldValue);
 
-    const jsonType = getJsonType(alternateFieldValue)
+	if (field.fieldTypes.includes(jsonType) === false) {
+		field.fieldTypes.push(jsonType);
+	}
 
-    if(field.fieldTypes.includes(jsonType) === false)
-    {
-        field.fieldTypes.push(jsonType)
-    }
+	// Null fields are considered optional
 
-    // Null fields are considered optional
-
-    if(alternateFieldValue === null)
-    {
-        field.isOptional = true
-    }
-
+	if (alternateFieldValue === null) {
+		field.isOptional = true;
+	}
 }
 
 function updateComplexField(
-    field: Field&IComplexFieldExtras,
-    alternateComplexFieldValue: {[key:string]:unknown},
-    keychain: string[])
-{
+	field: Field & IComplexFieldExtras,
+	alternateComplexFieldValue: { [key: string]: unknown },
+	keychain: string[]
+) {
+	for (const key in alternateComplexFieldValue) {
+		const value: unknown = alternateComplexFieldValue[key];
 
-    for(const key in alternateComplexFieldValue)
-    {
+		// Check for any fields not present in the first array item
 
-        const value: unknown = alternateComplexFieldValue[key]
+		if (!(key in field.fields)) {
+			// Object.assign(field.fields, getFieldMap(value, [...keychain, key]))
+			populateSubFieldMap(key, value, field.fields, [...keychain, key]);
 
-        // Check for any fields not present in the first array item
+			field.fields[key].isOptional = true;
+		}
 
-        if(!(key in field.fields))
-        {
-            // Object.assign(field.fields, getFieldMap(value, [...keychain, key]))
-            populateSubFieldMap(key, value, field.fields, [...keychain, key])
+		const subField = field.fields[key];
 
-            field.fields[key].isOptional = true
-        }
+		const subFieldType = getJsonType(alternateComplexFieldValue[key]);
 
-        const subField = field.fields[key]
+		// Add any type if we haven't seen it previously
 
-        const subFieldType = getJsonType(alternateComplexFieldValue[key])
+		if (subField.fieldTypes.includes(subFieldType) === false) {
+			subField.fieldTypes.push(subFieldType);
 
-        // Add any type if we haven't seen it previously
-
-        if(subField.fieldTypes.includes(subFieldType) === false)
-        {
-            subField.fieldTypes.push(subFieldType)
-
-            if(value === null)
-            {
-                subField.isOptional = true
-            }
-        }
-
-    }
-
+			if (value === null) {
+				subField.isOptional = true;
+			}
+		}
+	}
 }
 
 export {
 	JsonType,
 	Field,
-    IComplexFieldExtras,
+	IComplexFieldExtras,
 	FieldMap,
-    hasInterfaceTypes,
+	hasInterfaceTypes,
 	getFieldMap,
-}
+};

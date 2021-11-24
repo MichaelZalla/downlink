@@ -1,5 +1,5 @@
-import { jsonToTs } from '../../convert'
+import { jsonToTs } from '../../convert';
 
 const parcels: string = JSON.stringify(require('./parcels.json'));
 
-console.log(jsonToTs(parcels))
+console.log(jsonToTs(parcels));
