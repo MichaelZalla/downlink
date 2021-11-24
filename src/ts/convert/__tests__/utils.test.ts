@@ -1,8 +1,9 @@
-import { JsonType } from '../field';
+import { Field } from '../field';
 
 import {
 	isObject,
 	getJsonType,
+	buildField,
 	capitalize,
 	singularize,
 	pascal,
@@ -49,6 +50,43 @@ describe('getJsonType', () => {
 		expect(() => getJsonType(new Date())).toThrowErrorMatchingInlineSnapshot(
 			`"Called isObject() on a Date! Date is not a valid JSON data-type."`
 		);
+	});
+});
+
+describe('buildField', () => {
+	test('returns a Field object with default parameters', () => {
+		expect(buildField()).toMatchInlineSnapshot(`
+		Object {
+		  "fieldName": "",
+		  "fieldTypes": Array [
+		    "null",
+		  ],
+		  "isArray": false,
+		  "isOptional": false,
+		}
+	`);
+	});
+
+	test('assigns the field an empty fieldName if no `fieldName` option is given', () => {
+		expect(buildField().fieldName).toBe('');
+	});
+
+	test('defaults to a field with a `null` fieldType if no `fieldTypes` are given', () => {
+		expect(buildField().fieldTypes).toMatchObject([`null`]);
+	});
+
+	test('follows sensible defaults', () => {
+		expect(buildField().isOptional).toBeFalsy();
+		expect(buildField().isArray).toBeFalsy();
+	});
+
+	test('allows the caller to override parameters', () => {
+		const options: Partial<Field> = {
+			fieldName: `myField`,
+			fieldTypes: [`number`],
+		};
+
+		expect(buildField(options)).toMatchObject(options)
 	});
 });
 
