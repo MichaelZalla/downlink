@@ -6,8 +6,18 @@ import {
     keify,
 } from '../utils'
 
-test('isObject returns false for `null` values', () => {
+describe('isObject', () => {
 
-	expect(isObject(null)).toBe(false);
+    test('returns true for values `null` values', () => {
+        expect(isObject({ one: 'two', three: 'four' })).toBe(true);
+    });
 
-});
+    test('returns false for `null` values', () => {
+        expect(isObject(null)).toBe(false);
+    });
+
+    test('returns false for `undefined`', () => {
+        expect(isObject(undefined)).toBe(false);
+    });
+
+})
