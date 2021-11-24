@@ -38,14 +38,14 @@ function getFieldMap(
     const safeKeyChainKeys = keychain
         .map(k => pascal(singularize(k)))
 
-    const dataJsonType = getJsonType(data)
-
     if(getJsonType(data) !== `object`)
     {
         return {
             [fieldKey]: buildField({
                 fieldName: fieldKey,
-                fieldTypes: [dataJsonType],
+                fieldTypes: [
+                    getJsonType(data)
+                ],
             })
         }
     }
