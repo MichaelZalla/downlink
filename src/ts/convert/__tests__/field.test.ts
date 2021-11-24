@@ -200,6 +200,7 @@ describe('getFieldMap', () => {
 		});
 	});
 
+
 	test('supports data with deeply nested sub-objects', () => {
 		type Node = { data?: number; next?: Node };
 
@@ -443,4 +444,87 @@ describe('getFieldMap', () => {
 		}
 	`);
 	});
+
+	test('detects optional fields within array records', () => {
+		const root = {
+			contacts: [
+				{
+					name: 'Michael',
+					email: 'michael@zalla.io',
+					phone: '+1 859 982 4404',
+				},
+				{
+					name: 'Josh',
+					phone: '+1 222 222 2222',
+				},
+				{
+					name: 'Fido',
+					email: 'fido@guavalabs.io',
+					fax: 'Are you kiddin me bro?',
+				},
+			],
+		};
+
+		const fm = getFieldMap(root);
+
+		expect(fm).toMatchInlineSnapshot(`
+		Object {
+		  "root": Object {
+		    "fieldName": "root",
+		    "fieldTypes": Array [
+		      "object",
+		    ],
+		    "fields": Object {
+		      "contacts": Object {
+		        "fieldName": "contacts",
+		        "fieldTypes": Array [
+		          "object",
+		        ],
+		        "fields": Object {
+		          "email": Object {
+		            "fieldName": "email",
+		            "fieldTypes": Array [
+		              "string",
+		            ],
+		            "isArray": false,
+		            "isOptional": true,
+		          },
+		          "fax": Object {
+		            "fieldName": "fax",
+		            "fieldTypes": Array [
+		              "string",
+		            ],
+		            "isArray": false,
+		            "isOptional": true,
+		          },
+		          "name": Object {
+		            "fieldName": "name",
+		            "fieldTypes": Array [
+		              "string",
+		            ],
+		            "isArray": false,
+		            "isOptional": false,
+		          },
+		          "phone": Object {
+		            "fieldName": "phone",
+		            "fieldTypes": Array [
+		              "string",
+		            ],
+		            "isArray": false,
+		            "isOptional": true,
+		          },
+		        },
+		        "interfaceName": "IRootContact",
+		        "isArray": true,
+		        "isOptional": false,
+		      },
+		    },
+		    "interfaceName": "IRoot",
+		    "isArray": false,
+		    "isOptional": false,
+		  },
+		}
+	`);
+	});
+
 });
