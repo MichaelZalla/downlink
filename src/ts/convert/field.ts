@@ -10,7 +10,6 @@ type JsonType =
 	| 'string'
 	| 'number'
 	| 'boolean'
-	| 'undefined'
 	| 'object'
 	| `null`;
 
