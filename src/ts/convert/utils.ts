@@ -55,15 +55,14 @@ const singularize = (str: string) => {
 
 }
 
-const keify = (str: string) => {
+const pascal = (str: string) => {
 
     if(!str)
     {
         return ''
     }
 
-
-    return str[0] + str.split(/[\s-]/).map(capitalize).join('').slice(1)
+    return str.split(/[\s-]/).map(capitalize).join('')
 
 }
 
@@ -72,5 +71,5 @@ export {
     getJsonType,
     capitalize,
     singularize,
-    keify,
+    pascal,
 }

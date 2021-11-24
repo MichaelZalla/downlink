@@ -5,7 +5,7 @@ import {
     getJsonType,
     capitalize,
     singularize,
-    keify,
+    pascal,
 } from '../utils'
 
 describe('isObject', () => {
@@ -96,6 +96,28 @@ describe('singularize', () => {
 
     test('ignores empty strings', () => {
         expect(singularize('')).toBe('')
+    })
+
+})
+
+describe('pascal', () => {
+
+    test('converts a string with spaces or hyphens into a pascal-case format', () => {
+        expect(pascal('this-not-that')).toBe('ThisNotThat')
+        expect(pascal('-this-not-that-')).toBe('ThisNotThat')
+        expect(pascal('this---not---that')).toBe('ThisNotThat')
+        expect(pascal('this not that')).toBe('ThisNotThat')
+        expect(pascal('this - not - that')).toBe('ThisNotThat')
+        expect(pascal('ThisNotThat')).toBe('ThisNotThat')
+    })
+
+    test('preserves decimal characters', () => {
+        expect(pascal('token-pool-0')).toBe('TokenPool0')
+        expect(pascal('token-pool-1')).toBe('TokenPool1')
+    })
+
+    test('ignores empty strings', () => {
+        expect(pascal('')).toBe('')
     })
 
 })
