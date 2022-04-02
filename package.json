@@ -1,6 +1,6 @@
 {
   "name": "downlink",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A TypeScript module for converting JSON data (strings) into TypeScript interfaces.",
   "main": "src/ts/index.ts",
   "scripts": {
