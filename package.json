@@ -1,5 +1,5 @@
 {
-  "name": "json-to-ts",
+  "name": "downlink",
   "version": "0.0.1",
   "description": "A TypeScript module for converting JSON data (strings) into TypeScript interfaces.",
   "main": "src/ts/index.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichaelZalla/json-to-ts.git"
+    "url": "git+https://github.com/MichaelZalla/downlink.git"
   },
   "keywords": [
     "typescript",
@@ -26,9 +26,9 @@
   "author": "Michael Zalla <michael@zalla.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MichaelZalla/json-to-ts/issues"
+    "url": "https://github.com/MichaelZalla/downlink/issues"
   },
-  "homepage": "https://github.com/MichaelZalla/json-to-ts#readme",
+  "homepage": "https://github.com/MichaelZalla/downlink#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",

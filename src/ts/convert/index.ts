@@ -1,3 +1,3 @@
-import {jsonToTs} from './json-to-ts'
+import downlink from './downlink'
 
-export {jsonToTs}
+export default downlink

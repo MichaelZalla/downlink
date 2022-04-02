@@ -1,4 +1,4 @@
-import { jsonToTs } from './convert';
+import downlink from './convert';
 
 // import './examples/parcels'
 // import './examples/pools'
@@ -48,4 +48,5 @@ const someJson: string = `
     ]
 }
 `;
-console.log(jsonToTs(someJson));
+
+console.log(downlink(someJson));

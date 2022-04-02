@@ -3,7 +3,7 @@
 ![Branch coverage](./badges/badge-branches.svg)
 ![Statement coverage](./badges/badge-statements.svg)
 
-# json-to-ts (v0.0.1)
+# downlink (v0.0.1)
 
 A TypeScript module for converting JSON data (strings) into TypeScript interfaces.
 
@@ -55,7 +55,7 @@ const someJson: string = `
 }
 `
 
-console.log(jsonToTs(someJson))
+console.log(downlink(someJson))
 ```
 
 ### Output
