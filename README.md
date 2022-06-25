@@ -7,7 +7,13 @@
 
 Instantly convert JSON strings to TypeScript interfaces.
 
-## Example
+## Install
+
+```bash
+npm i --save downlink
+```
+
+## Use
 
 ```ts
 const someJson: string = `
