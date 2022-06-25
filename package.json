@@ -2,7 +2,7 @@
   "name": "downlink",
   "version": "0.0.3",
   "description": "A TypeScript module for converting JSON data (strings) into TypeScript interfaces.",
-  "main": "src/ts/index.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "ts-node ./src/ts/index.ts",
     "build": "tsc",
