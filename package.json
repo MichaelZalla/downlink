@@ -1,6 +1,6 @@
 {
   "name": "downlink",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A TypeScript module for converting JSON data (strings) into TypeScript interfaces.",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "./node_modules/.bin/eslint src/ts --ext .ts",
     "prettier": "prettier --config .prettierrc.js --write **/*.ts",
-		"pretty-quick": "pretty-quick",
+    "pretty-quick": "pretty-quick",
     "clean": "rm -rf ./dist/**",
     "badges": "jest-coverage-badges --output ./badges",
     "test": "jest"
@@ -18,7 +18,8 @@
     "url": "git+https://github.com/MichaelZalla/downlink.git"
   },
   "files": [
-    "./dist/**/*"
+    "dist/index.js",
+    "dist/convert/**.js"
   ],
   "keywords": [
     "typescript",
@@ -49,8 +50,8 @@
     "typescript-eslint": "^0.0.1-alpha.0"
   },
   "husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
-	}
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }

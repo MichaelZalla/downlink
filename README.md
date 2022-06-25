@@ -3,7 +3,7 @@
 ![Branch coverage](./badges/badge-branches.svg)
 ![Statement coverage](./badges/badge-statements.svg)
 
-# downlink (v0.0.4)
+# downlink (v0.0.5)
 
 A TypeScript module for converting JSON data (strings) into TypeScript interfaces.
 
