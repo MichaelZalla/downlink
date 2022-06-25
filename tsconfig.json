@@ -1,4 +1,12 @@
 {
+  "include": [
+    "./src/ts/**/*.ts"
+  ],
+  "exclude": [
+    "./src/ts/convert/__tests__/",
+    "./src/ts/examples.ts",
+    "./src/ts/examples**",
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
