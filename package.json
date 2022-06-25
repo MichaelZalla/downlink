@@ -9,7 +9,7 @@
     "lint": "./node_modules/.bin/eslint src/ts --ext .ts",
     "prettier": "prettier --config .prettierrc.js --write **/*.ts",
 		"pretty-quick": "pretty-quick",
-    "clean": "find src/ts -type f -name '*.js' | xargs rm",
+    "clean": "rm -rf ./dist/**",
     "badges": "jest-coverage-badges --output ./badges",
     "test": "jest"
   },
