@@ -5,7 +5,7 @@
 
 # downlink (v0.0.5)
 
-A TypeScript module for converting JSON data (strings) into TypeScript interfaces.
+Instantly convert JSON strings to TypeScript interfaces.
 
 ## Example
 
