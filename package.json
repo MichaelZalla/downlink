@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git+https://github.com/MichaelZalla/downlink.git"
   },
+  "files": [
+    "./dist/**/*"
+  ],
   "keywords": [
     "typescript",
     "json",
